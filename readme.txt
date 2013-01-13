@@ -1,11 +1,11 @@
 === Facebook Thumb Fixer ===
 Contributors: mikeyott
-Tags: facebook, thumb, fixer, thumbnail, like
+Tags: facebook, thumb, fixer, default, thumbnail, thumbnails, thumbs, og:image, open, graph
 Requires at least: 2.9.2
-Tested up to: 3.4.2
+Tested up to: 3.5
 Stable tag: trunk
 
-Fixes the problem of the missing (or wrong) thumbnail when a post os shared on Facebook.
+Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook.
 
 == Description ==
 
@@ -24,6 +24,11 @@ Deactivate the plugin, delete if desired.
 <a href="http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress">That Web Guy Blog</a>
 
 == Changelog ==
+
+= 1.1 =
+
+* Updated tags.
+* Fixed typos.
 
 = 1.0 =
 
