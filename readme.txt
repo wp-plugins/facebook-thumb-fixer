@@ -33,6 +33,10 @@ Go to Settings -> General and sccroll down until you find 'Default Facebook Thum
 
 == Changelog ==
 
+= 1.2 =
+
+* Minor edits, nothing important.
+
 = 1.1 =
 
 * Updated tags.
