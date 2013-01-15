@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook.
 Author: Michael Ott
-Version: 1.2
+Version: 1.21
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -28,7 +28,7 @@ class general_setting_default_fb_thumb {
     }
     function fields_html() {
         $fbt_value = get_option( 'default_fb_thumb', '' );
-        echo '<input type="text" id="default_fb_thumb" class="regular-text ltr" name="default_fb_thumb" value="' . $fbt_value . '" /> <p class="description">This is the full path to your default Facebook thumb (Ideally 100 x 100px. Go <a href="' . admin_url( '/options-general.php?page=facebook-thumb-fixer' ) . '">here</a> for more information.)</p>';
+        echo '<input type="text" id="default_fb_thumb" class="regular-text ltr" name="default_fb_thumb" value="' . $fbt_value . '" /> <p class="description">This is the full path to your default Facebook thumb (Ideally 155 x 155px. Go <a href="' . admin_url( '/options-general.php?page=facebook-thumb-fixer' ) . '">here</a> for more information.)</p>';
 		if ($fbt_value) {
 		echo '<img src="' . $fbt_value . '" title="Default Facebook Thumb" />';
 		}
@@ -54,7 +54,7 @@ function my_plugin_options() {
     <p style="background:url(<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/tick.png) no-repeat left; padding:0 0 0 20px;">You currently have a Default Facebook Thumbnail set. You can change it <a href="<?php echo get_admin_url(); ?>/options-general.php">here</a>.</p>
     <img src="<?php echo $fbt_value; ?>" alt="" />
     <?php } else { ?>
-    <p style="background:url(<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/cross.png) no-repeat left; padding:0 0 0 20px;">You currently do not have a Default Facebook Thumbnail set. Set one <a href="<?php echo get_admin_url(); ?>/options-general.php">here</a>. Ideally this would be a 100 x 100px image of your logo or brand.</p>
+    <p style="background:url(<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/cross.png) no-repeat left; padding:0 0 0 20px;">You currently do not have a Default Facebook Thumbnail set. Set one <a href="<?php echo get_admin_url(); ?>/options-general.php">here</a>. Ideally this would be a 155 x 155px image of your logo or brand.</p>
     <?php } ?>
     <h3>Help Topics</h3>
     <ul>

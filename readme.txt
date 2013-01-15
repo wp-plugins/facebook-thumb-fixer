@@ -29,9 +29,13 @@ Go to Settings -> Facebook Thumb Fixer for detailed information how it works and
 
 == How to set a fall-back image ==
 
-Go to Settings -> General and sccroll down until you find 'Default Facebook Thumb'. Put the path to your fall-back image there. 100x100 pixels is ideal.
+Go to Settings -> General and sccroll down until you find 'Default Facebook Thumb'. Put the path to your fall-back image there. 155x155 pixels is ideal.
 
 == Changelog ==
+
+= 1.21 =
+
+* Updated documentation page, suggesting default thumbnail to be 155x155 (because thumbs are that size on Facebook brand pages).
 
 = 1.2 =
 
