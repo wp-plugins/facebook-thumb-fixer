@@ -33,7 +33,7 @@ Go to Settings -> General and sccroll down until you find 'Default Facebook Thum
 
 == Changelog ==
 
-= 1.21 =
+= 1.2.1 =
 
 * Updated documentation page, suggesting default thumbnail to be 155x155 (because thumbs are that size on Facebook brand pages).
 
