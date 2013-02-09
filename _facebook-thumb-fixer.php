@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook.
 Author: Michael Ott
-Version: 1.2.2
+Version: 1.2.3
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -101,7 +101,7 @@ if (has_post_thumbnail()) {
 // Set '$featuredimg' variable for the featured image.
 $featuredimg = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "Full");
 $ftf_head = '
-<!--/ Facebook Open Graph /-->
+<!--/ Open Graph /-->
 <meta property="og:image" content="' . $featuredimg[0] . '" />
 <meta property="og:title" content="' . get_the_title() . '" /> 
 <meta property="og:url" content="' . get_permalink() . '" /> 
@@ -109,7 +109,7 @@ $ftf_head = '
 //...otherwise, if there is no post image.
 } else {
 $ftf_head = '
-<!--/ Facebook Open Graph /-->
+<!--/ Open Graph /-->
 <meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
 <meta property="og:title" content="' . get_the_title() . '" />
 <meta property="og:url" content="' . get_permalink() . '" />
@@ -117,7 +117,7 @@ $ftf_head = '
 }
 } else { //...otherwise, it must be the homepage so do this:
 $ftf_head = '
-<!--/ Facebook Open Graph /-->
+<!--/ Open Graph /-->
 <meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
 <meta property="og:title" content="' . get_bloginfo('name') . '" />
 <meta property="og:url" content="' . get_option('home') . '" />

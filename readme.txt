@@ -5,13 +5,16 @@ Requires at least: 2.9.2
 Tested up to: 3.5
 Stable tag: trunk
 
-Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook.
+Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook or Google+.
 
 == Description ==
 
-This plugin is for those who have the problem where sharing a post on Facebook shows the wrong (or no) thumbnail image.
+This plugin is for those who have the problem where sharing a post on Facebook or Google+ shows the wrong (or no) thumbnail image.
 
-It works by making sure the Facebook thumbnail is dervived from the featured image of your post. If your post doesn't have a featured image then it will use a fall-back image that can specify.
+It works by making sure the thumbnail is dervived from the featured image of your post. If your post doesn't have a featured image then it will use a fall-back image that you can specify in Settings -> General.
+
+The plugin forces the open graph meta properties into the head of each page and post: og:image, og:title and og:url, which both Facebook and Google+ scan for when someone shares your web page.
+
 
 == Installation ==
 
@@ -32,6 +35,11 @@ Go to Settings -> Facebook Thumb Fixer for detailed information how it works and
 Go to Settings -> General and sccroll down until you find 'Default Facebook Thumb'. Put the path to your fall-back image there. 155x155 pixels is ideal.
 
 == Changelog ==
+
+= 1.2.3 =
+
+* Changed comment output in head to 'Open Graph' instead of 'Facebook Open Graph'.
+* Clarification on how the plugin works.
 
 = 1.2.2 =
 
