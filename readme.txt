@@ -13,7 +13,7 @@ This plugin is for those who have the problem where sharing a post on Facebook o
 
 It works by making sure the thumbnail is dervived from the featured image of your post. If your post doesn't have a featured image then it will use a fall-back image that you can specify in Settings -> General.
 
-The plugin forces the open graph meta properties into the head of each page and post: og:image, og:title and og:url, which both Facebook and Google+ scan for when someone shares your web page.
+The plugin forces the open graph meta properties into the head of each page and post: og:image, og:title, og:description, og:site_name, og:type and og:url, all of which both Facebook and Google+ (and other services that use open graph) scan for when someone shares your web page.
 
 
 == Installation ==
