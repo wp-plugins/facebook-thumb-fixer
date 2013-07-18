@@ -36,6 +36,13 @@ Go to Settings -> General and sccroll down until you find 'Default Facebook Thum
 
 == Changelog ==
 
+= 1.3 =
+
+* Included new open graph properties for og:description, og:site_name and og:type.
+* Added visual indication of the field on the settings page.
+* Fixed width on preview image (for when someone accidentally uses a massive image).
+* Updated help guide.
+
 = 1.2.3 =
 
 * Changed comment output in head to 'Open Graph' instead of 'Facebook Open Graph'.
