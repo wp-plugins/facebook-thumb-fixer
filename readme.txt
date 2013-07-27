@@ -36,6 +36,10 @@ Go to Settings -> General and sccroll down until you find 'Default Facebook Thum
 
 == Changelog ==
 
+= 1.3.1 =
+
+* Updated recommended og:image dimensions.
+
 = 1.3 =
 
 * Included new open graph properties for og:description, og:site_name and og:type.
