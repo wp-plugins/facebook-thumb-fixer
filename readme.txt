@@ -36,6 +36,10 @@ Go to Settings -> General and sccroll down until you find 'Default Facebook Thum
 
 == Changelog ==
 
+= 1.3.2 =
+
+* Changed function name to something less generic to avoid potential conflict with other plugins.
+
 = 1.3.1 =
 
 * Updated recommended og:image dimensions.

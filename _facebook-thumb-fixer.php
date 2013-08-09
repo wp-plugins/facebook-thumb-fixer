@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook.
 Author: Michael Ott
-Version: 1.3.1
+Version: 1.3.2
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -48,12 +48,12 @@ class general_setting_default_fb_thumb {
 // Add page into the SETTINGS menu
 add_action( 'admin_menu', 'ftfixer_menu' );
 function ftfixer_menu() {
-	add_options_page( 'Facebook Thumb Fixer Help', 'Facebook Thumb Fixer', 'manage_options', 'facebook-thumb-fixer', 'my_plugin_options' );
+	add_options_page( 'Facebook Thumb Fixer Help', 'Facebook Thumb Fixer', 'manage_options', 'facebook-thumb-fixer', 'myfbft_plugin_options' );
 }
-function my_plugin_options() {
+function myfbft_plugin_options() {
 	if ( !current_user_can( 'read' ) )  { // This help page is accessible to anyone
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
-	} ?>
+} ?>
 	
 <div class="wrap">
     <h2>Facebook Thumb Fixer - General Information</h2>
