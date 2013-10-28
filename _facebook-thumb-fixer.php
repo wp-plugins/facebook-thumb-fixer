@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook.
 Author: Michael Ott
-Version: 1.3.2
+Version: 1.3.3
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -138,33 +138,33 @@ if (has_post_thumbnail()) {
 $featuredimg = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "Full");
 $ftf_head = '
 <!--/ Open Graph /-->
-<meta property="og:title" content="' . get_the_title() . '" />
+<meta property="og:title" content="' . get_the_title (strip_tags('title')) . '" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="' . get_permalink() . '" /> 
 <meta property="og:description" content="' . get_the_excerpt() . '" />
-<meta property="og:site_name" content="' . get_bloginfo('name') . '" />
+<meta property="og:site_name" content="' . get_bloginfo(strip_tags('name')) . '" />
 <meta property="og:image" content="' . $featuredimg[0] . '" />
 ';
 //...otherwise, if there is no post image.
 } else {
 $ftf_head = '
 <!--/ Open Graph /-->
-<meta property="og:title" content="' . get_the_title() . '" />
+<meta property="og:title" content="' . get_the_title (strip_tags('title')) . '" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="' . get_permalink() . '" />
 <meta property="og:description" content="' . get_the_excerpt() . '" />
-<meta property="og:site_name" content="' . get_bloginfo('name') . '" />
+<meta property="og:site_name" content="' . get_bloginfo(strip_tags('name')) . '" />
 <meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
 ';
 }
 } else { //...otherwise, it must be the homepage so do this:
 $ftf_head = '
 <!--/ Open Graph /-->
-<meta property="og:title" content="' . get_bloginfo('name') . '" />
+<meta property="og:title" content="' . get_bloginfo(strip_tags('name')) . '" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="' . get_option('home') . '" />
 <meta property="og:description" content="' . get_bloginfo (strip_tags('description')) . '" />
-<meta property="og:site_name" content="' . get_bloginfo('name') . '" />
+<meta property="og:site_name" content="' . get_bloginfo(strip_tags('name')) . '" />
 <meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
 ';
 }
