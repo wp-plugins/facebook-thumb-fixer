@@ -1,8 +1,8 @@
 === Facebook Thumb Fixer ===
 Contributors: mikeyott
-Tags: facebook, thumb, fixer, default, thumbnail, thumbnails, thumbs, og:image, open, graph
+Tags: facebook, thumb, fixer, default, thumbnail, thumbnails, thumbs, og:image, og:description, og:title, open, graph, open graph
 Requires at least: 2.9.2
-Tested up to: 3.5
+Tested up to: 3.8
 Stable tag: trunk
 
 Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook or Google+.
@@ -11,7 +11,7 @@ Fixes the problem of the missing (or wrong) thumbnail when a post is shared on F
 
 This plugin is for those who have the problem where sharing a post on Facebook or Google+ shows the wrong (or no) thumbnail image.
 
-It works by making sure the thumbnail is dervived from the featured image of your post. If your post doesn't have a featured image then it will use a fall-back image that you can specify in Settings -> General.
+It works by making sure the thumbnail is derived from the featured image of your post. If your post doesn't have a featured image then it will use a fall-back image that you can specify in Settings -> General.
 
 The plugin forces the open graph meta properties into the head of each page and post: og:image, og:title, og:description, og:site_name, og:type and og:url, all of which both Facebook and Google+ (and other services that use open graph) scan for when someone shares your web page.
 
@@ -32,9 +32,16 @@ Go to Settings -> Facebook Thumb Fixer for detailed information how it works and
 
 == How to set a fall-back image ==
 
-Go to Settings -> General and sccroll down until you find 'Default Facebook Thumb'. Put the path to your fall-back image there. 155x155 pixels is ideal.
+Go to Settings -> General and scroll down until you find 'Default Facebook Thumb'. Put the path to your fall-back image there. Make sure it's at least 200x200.
 
 == Changelog ==
+
+= 1.3.4 =
+
+'Tested up to' compatibility with Wordpress 3.8.
+Wordpress 3.8 notification UI.
+Updated documentation to reflect current Facebook requirements, removed document redundancy.
+Typo corrections.
 
 = 1.3.3 =
 
