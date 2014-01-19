@@ -36,6 +36,12 @@ Go to Settings -> General and scroll down until you find 'Default Facebook Thumb
 
 == Changelog ==
 
+= 1.3.5 =
+
+Replaced strip_tags with preferable wp_kses function.
+HTML is now stripped from excerpts.
+Fixed issue where title sometimes wasn't being output into og:title on posts.
+
 = 1.3.4 =
 
 'Tested up to' compatibility with Wordpress 3.8.

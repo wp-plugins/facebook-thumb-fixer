@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook.
 Author: Michael Ott
-Version: 1.3.4
+Version: 1.3.5
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -133,42 +133,46 @@ function myfbft_plugin_options() {
 <?php }
 add_action('wp_head', 'fbfixhead');
 function fbfixhead() { 
-if ( !is_home() ) { // If not the homepage
-// If there is a post image...
-if (has_post_thumbnail()) {
-// Set '$featuredimg' variable for the featured image.
-$featuredimg = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "Full");
-$ftf_head = '
-<!--/ Facebook Thumb Fixer Open Graph /-->
-<meta property="og:title" content="' . get_the_title (strip_tags('title')) . '" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="' . get_permalink() . '" /> 
-<meta property="og:description" content="' . get_the_excerpt() . '" />
-<meta property="og:site_name" content="' . get_bloginfo(strip_tags('name')) . '" />
-<meta property="og:image" content="' . $featuredimg[0] . '" />
-';
-//...otherwise, if there is no post image.
-} else {
-$ftf_head = '
-<!--/ Facebook Thumb Fixer Open Graph /-->
-<meta property="og:title" content="' . get_the_title (strip_tags('title')) . '" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="' . get_permalink() . '" />
-<meta property="og:description" content="' . get_the_excerpt() . '" />
-<meta property="og:site_name" content="' . get_bloginfo(strip_tags('name')) . '" />
-<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
-';
-}
-} else { //...otherwise, it must be the homepage so do this:
-$ftf_head = '
-<!--/ Facebook Thumb Fixer Open Graph /-->
-<meta property="og:title" content="' . get_bloginfo(strip_tags('name')) . '" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="' . get_option('home') . '" />
-<meta property="og:description" content="' . get_bloginfo (strip_tags('description')) . '" />
-<meta property="og:site_name" content="' . get_bloginfo(strip_tags('name')) . '" />
-<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
-';
+	if ( !is_home() ) { // If not the homepage
+	
+	// If there is a post image...
+	if (has_post_thumbnail()) {
+	// Set '$featuredimg' variable for the featured image.
+	$featuredimg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), "Full");
+	$ftf_description = get_the_excerpt($post->ID);
+	$ftf_head = '
+	<!--/ Facebook Thumb Fixer Open Graph /-->
+	<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="' . get_permalink() . '" /> 
+	<meta property="og:description" content="' . wp_kses($ftf_description, array ()) . '" />
+	<meta property="og:site_name" content="' . wp_kses_data(get_bloginfo('name')) . '" />
+	<meta property="og:image" content="' . $featuredimg[0] . '" />
+	';
+	} else { //...otherwise, if there is no post image.
+	$ftf_description = get_the_excerpt($post->ID);
+	$ftf_head = '
+	<!--/ Facebook Thumb Fixer Open Graph /-->
+	<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="' . get_permalink() . '" />
+	<meta property="og:description" content="' . wp_kses($ftf_description, array ()) . '" />
+	<meta property="og:site_name" content="' . wp_kses_data(get_bloginfo('name')) . '" />
+	<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
+	';
+	}
+	} else { //...otherwise, it must be the homepage so do this:
+	$ftf_name = get_bloginfo('name');
+	$ftf_description = get_bloginfo('description');
+	$ftf_head = '
+	<!--/ Facebook Thumb Fixer Open Graph /-->
+	<meta property="og:title" content="' . wp_kses($ftf_name, array ()) . '" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="' . get_option('home') . '" />
+	<meta property="og:description" content="' . wp_kses_data($ftf_description, array ()) . '" />
+	<meta property="og:site_name" content="' . wp_kses($ftf_name, array ()) . '" />
+	<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
+	';
 }
   echo $ftf_head;
   print "\n";
