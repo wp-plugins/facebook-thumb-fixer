@@ -1,7 +1,7 @@
 === Facebook Thumb Fixer ===
 Contributors: mikeyott
 Tags: facebook, thumb, fixer, default, thumbnail, thumbnails, thumbs, og:image, og:description, og:title, open, graph, open graph
-Requires at least: 2.9.2
+Requires at least: 3.0
 Tested up to: 3.8
 Stable tag: trunk
 
@@ -9,12 +9,13 @@ Fixes the problem of the missing (or wrong) thumbnail when a post is shared on F
 
 == Description ==
 
-This plugin is for those who have the problem where sharing a post on Facebook or Google+ shows the wrong (or no) thumbnail image.
+This plug-in is for those who have the problem where sharing a post on Facebook or Google+ shows the wrong (or no) thumbnail image.
 
 It works by making sure the thumbnail is derived from the featured image of your post. If your post doesn't have a featured image then it will use a fall-back image that you can specify in Settings -> General.
 
-The plugin forces the open graph meta properties into the head of each page and post: og:image, og:title, og:description, og:site_name, og:type and og:url, all of which both Facebook and Google+ (and other services that use open graph) scan for when someone shares your web page.
+The plug-in forces the open graph meta properties into the head of each page and post: og:image, og:title, og:description, og:site_name, og:type and og:url, all of which both Facebook and Google+ (and other services that use open graph) scan for when someone shares your web page.
 
+<strong>NEW!</strong> Specify an <a href-"https://developers.facebook.com/docs/reference/opengraph" target="_blank">object type</a> for any post, page or the home page.
 
 == Installation ==
 
@@ -34,7 +35,26 @@ Go to Settings -> Facebook Thumb Fixer for detailed information how it works and
 
 Go to Settings -> General and scroll down until you find 'Default Facebook Thumb'. Put the path to your fall-back image there. Make sure it's at least 200x200.
 
+== How to set an object type ==
+
+<strong>Posts and Pages</strong>
+
+On each page or post you edit there is an 'Open Graph Object Type' meta box. Simply make a section from there to specify what Object Type the page or post is. Example: If the it's an article, then choose 'article'. If it's a product, choose 'product'. To help you decide what Object Type to choose, go <a href-"https://developers.facebook.com/docs/reference/opengraph" target="_blank">here</a> to learn the differences between them all.
+
+Note: If no selection is made for posts or pages then the Object Type will be 'article'.
+
+<strong>Home page</strong>
+
+To specify what Object Type your homepage is, go to the Wordpress Settings -> General page and make a selection from the 'Home page Object Type' field.
+
+Note: If no selection is made for the home page then the Object Type will be 'webpage'.
+
 == Changelog ==
+
+= 1.4 =
+
+Added the ability to specify a unique Object Type for each post, page and the home page.
+Updated documentation.
 
 = 1.3.5 =
 
