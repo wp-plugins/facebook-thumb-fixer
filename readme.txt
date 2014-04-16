@@ -2,7 +2,7 @@
 Contributors: mikeyott
 Tags: facebook, thumb, fixer, default, thumbnail, thumbnails, thumbs, og:image, og:description, og:title, open, graph, open graph
 Requires at least: 3.0
-Tested up to: 3.8
+Tested up to: 3.9
 Stable tag: trunk
 
 Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook or Google+.
