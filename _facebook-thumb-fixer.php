@@ -2,11 +2,13 @@
 /*
 Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
-Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook.
+Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook and Google+.
 Author: Michael Ott
-Version: 1.4
+Version: 1.4.1
 Author URI: http://www.thatwebguyblog.com
 */
+
+// Additional contribution by MutebiRoy for Google+ full bleed image support (http://profiles.wordpress.org/mutebiroy/)
 
 // Add HELP link from the plugin page
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'link_action_on_plugin' );
@@ -212,11 +214,10 @@ function myfbft_plugin_options() {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 } ?>
 
-<div style="float:right; width:250px; padding:0 20px 180px 20px; background:#fff url(<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/tr-promo-background.png) no-repeat bottom; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 1px 0px; margin:55px 25px 0 0;">
-    <h3>Introducing Task Rocket</h3>
-    <p style="text-align:center;"><img src="<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/task-rocket.png" /></p>
-    <p>Task Rocket is a simple front-end task management tool built on Wordpress.</p>
-    <p><a href="http://taskrocket.info/" target="_blank" style="display:block; color:#fff; background:#74c33f; padding:10px; text-decoration:none; text-align:center; border-radius:2px;">Take it for a test flight</a></p>
+<div style="position:fixed; bottom:0; right:0; width:250px; padding:0 20px 180px 20px; background:#2fcaa4 url(<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/tr-promo-background.png) no-repeat bottom; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 1px 0px; margin:55px 25px 0 0;">
+    <h3 style="color:#333f4f; text-align:center; text-transform:uppercase;">Introducing Task Rocket</h3>
+    <p style="color:#fff; text-align:center;">Task Rocket is a simple front-end task management tool built on Wordpress.</p>
+    <p><a href="http://taskrocket.info/" target="_blank" style="display:block; width:185px; margin:10px auto 0 auto; font-weight:bold; text-transform:uppercase; color:#fff; background:#fab13f; border-bottom:solid 3px #e69200; padding:10px 0; text-decoration:none; text-align:center; border-radius:3px;">Take it for a test flight</a></p>
 </div>
 	
 <div class="wrap" style="margin:0 340px 0 0 !important;">
@@ -310,12 +311,17 @@ function fbfixhead() {
 	if($ot == "") { $default = "article"; } else $default = get_post_meta($post->ID, 'ftf_open_type', true);
 	$ftf_head = '
 	<!--/ Facebook Thumb Fixer Open Graph /-->
-	<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
 	<meta property="og:type" content="'. $default . '" />
-	<meta property="og:url" content="' . get_permalink() . '" /> 
+	<meta property="og:url" content="' . get_permalink() . '" />
+	<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
 	<meta property="og:description" content="' . wp_kses($ftf_description, array ()) . '" />
 	<meta property="og:site_name" content="' . wp_kses_data(get_bloginfo('name')) . '" />
 	<meta property="og:image" content="' . $featuredimg[0] . '" />
+
+	<meta itemscope itemtype="'. $default . '" />
+	<meta itemprop="name" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
+	<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
+	<meta itemprop="image" content="' . $featuredimg[0] . '" />
 	';
 	} else { //...otherwise, if there is no post image.
 	$ftf_description = get_the_excerpt($post->ID);
@@ -324,12 +330,17 @@ function fbfixhead() {
 	if($ot == "") { $default = "article"; } else $default = get_post_meta($post->ID, 'ftf_open_type', true);
 	$ftf_head = '
 	<!--/ Facebook Thumb Fixer Open Graph /-->
-	<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
 	<meta property="og:type" content="'. $default . '" />
 	<meta property="og:url" content="' . get_permalink() . '" />
+	<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
 	<meta property="og:description" content="' . wp_kses($ftf_description, array ()) . '" />
 	<meta property="og:site_name" content="' . wp_kses_data(get_bloginfo('name')) . '" />
 	<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
+
+	<meta itemscope itemtype="'. $default . '" />
+	<meta itemprop="name" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
+	<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
+	<meta itemprop="image" content="' . get_option('default_fb_thumb') . '" />
 	';
 	}
 	} else { //...otherwise, it must be the homepage so do this:
@@ -339,12 +350,17 @@ function fbfixhead() {
 	if($ot == "") { $default = "website"; } else $default = get_option( 'homepage_object_type', '');
 	$ftf_head = '
 	<!--/ Facebook Thumb Fixer Open Graph /-->
-	<meta property="og:title" content="' . wp_kses($ftf_name, array ()) . '" />
 	<meta property="og:type" content="' . $default . '" />
 	<meta property="og:url" content="' . get_option('home') . '" />
+	<meta property="og:title" content="' . wp_kses($ftf_name, array ()) . '" />
 	<meta property="og:description" content="' . wp_kses_data($ftf_description, array ()) . '" />
 	<meta property="og:site_name" content="' . wp_kses($ftf_name, array ()) . '" />
 	<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
+
+	<meta itemscope itemtype="'. $default . '" />
+	<meta itemprop="name" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
+	<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
+	<meta itemprop="image" content="' . get_option('default_fb_thumb') . '" />
 	';
 }
   echo $ftf_head;
