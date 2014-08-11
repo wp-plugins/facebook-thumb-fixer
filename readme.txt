@@ -51,6 +51,10 @@ Note: If no selection is made for the home page then the Object Type will be 'we
 
 == Changelog ==
 
+= 1.4.2 =
+
+Updated documentation page.
+
 = 1.4.1 =
 
 Added Google+ full bleed image support.

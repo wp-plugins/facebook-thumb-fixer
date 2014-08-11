@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook and Google+.
 Author: Michael Ott
-Version: 1.4.1
+Version: 1.4.2
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -37,7 +37,7 @@ class general_setting_default_fb_thumb {
 		if ($fbt_value) {
 		echo '<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjE4NDFDNDFEQzgwMjExRTI5MUZGQzg5MzA4ODM1MEFBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjE4NDFDNDFFQzgwMjExRTI5MUZGQzg5MzA4ODM1MEFBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTg0MUM0MUJDODAyMTFFMjkxRkZDODkzMDg4MzUwQUEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MTg0MUM0MUNDODAyMTFFMjkxRkZDODkzMDg4MzUwQUEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6VyfjPAAABLElEQVR42qyVMYrCQBSGx4dHELyB2O1W1mKTyhOIYGHl1p5hC2uxSbFNLrBWNsHaylJSbC94BvF/8mcZYoaZSfzhI4TJ+5KQNy+d1e+HcSQBYzACQ9AHV3ABJ3AEh7rCTo10AhZgBsS4cwcZ+AG5vVAtWoIdmHuEZe2c1y/thW5F+A16Ji4D1mlS+0n1ldcNhGV6rJ/Y0gXv2CYDep7ShB/lHVFPImwbiancTs9PHB9vLOzDKKEnI2FjBwns86/9p6tsKNwpTmH16BFq+sKt9xK7MEKouQr3svGJA4Wai3A4GJ84UKg5CafNPUQcEPUcheMre1Pzq+dQNr2Or6KlsKDnfyfpPNyAW0PhjfV5dfSlPK4jh0tBYVo3T0vxX9vJ3625OCdZ03/UQ4ABAPf1Uw2qATa2AAAAAElFTkSuQmCC" style="position:relative; top:6px; left:5px;" />';
 		}
-		echo '<p class="description">This is the full path to your default Facebook thumb (Ideally 200 x 200px. Go <a href="' . admin_url( '/options-general.php?page=facebook-thumb-fixer' ) . '">here</a> for more information.)</p>';
+		echo '<p class="description">This is the full path to your default thumb (Ideally at least 400px wide. Go <a href="' . admin_url( '/options-general.php?page=facebook-thumb-fixer' ) . '">here</a> for more information.)</p>';
 		if ($fbt_value) {
 		echo '<p style="font-family:Georgia;font-style:italic;color:#666;">(Note: The image shown below is scaled down. The real dimensions are actually ';
 		list($width, $height) = getimagesize($fbt_value); echo $width . ' x ' . $height . ')</p>';
@@ -229,7 +229,7 @@ function myfbft_plugin_options() {
     <p style="font-family:Georgia, 'Times New Roman', Times, serif; font-style:italic;color:#666;">(Note: The image shown below is scaled down. The real dimensions are actually <?php list($width, $height) = getimagesize($fbt_value); echo $width . " x " . $height; ?>)</p>
     <img src="<?php echo $fbt_value; ?>" alt="" style="max-width:75px;" />
     <?php } else { ?>
-    <p style="border-left:solid 4px #ff0000; padding:8px; background:#fff; border-radius:2px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 1px 0px;">You currently do not have a Default Facebook Thumbnail set. Set one <a href="<?php echo get_admin_url(); ?>/options-general.php">here</a>. Ideally this would be a 200 x 200px image of your logo or brand.</p>
+    <p style="border-left:solid 4px #ff0000; padding:8px; background:#fff; border-radius:2px; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 1px 0px;">You currently do not have a Default Facebook Thumbnail set. Set one <a href="<?php echo get_admin_url(); ?>/options-general.php">here</a>. Ideally this would be an image of your logo or brand (at least 400px wide).</p>
     <?php } ?>
     <h3 style="border-top:solid 1px #ccc; margin:20px 0; padding:20px 0 0 0;">Help Topics</h3>
     <ul>
@@ -245,25 +245,9 @@ function myfbft_plugin_options() {
     
     <h3 id="topic01" style="border-top:solid 1px #ccc; margin:20px 0; padding:20px 0 0 0;">What does this plug-in do?</h3>
     <p>This plug-in will place the appropriate  <a href="http://ogp.me/" target="_blank">Open Graph</a> meta properties into the &lt;head&gt; of your web pages, so that when someone links to your page on Facebook (or any other service that utilises the Open Graph protocol) the correct thumbnail and other information will show.</p>
-    <p>This includes:</p>
-    <p><strong>og:title</strong><br />
-    The open graph title is automatically determined by the page or post title.</p>
-    <p><strong>og:type</strong><br />
-    The open graph type (Object Type) <a href="#topic03">can be specified</a> for the homepage, posts, and pages. By default they will be 'webpage' for the home page and 'article' for all posts and pages.</p>
-    <p><strong>og:url</strong><br />
-    The open graph URL is automatically determined by the permalink for the current web page.</p>
-    <p><strong>og:description</strong><br />
-    The open graph description is automatically determined by the post/page excerpt for internal pages, and the website tag-line when on the homepage. Be sure to add a suitable website description into the tag-line field <a href="options-general.php">here</a>, and excerpts to your pages and posts.</p>
-    <p><strong>og:site_name</strong><br />
-    The open graph site name 
-    is automatically determined by the site title. Be sure to add a suitable title into the Site Title field <a href="options-general.php">here</a>.</p>
-    <p><strong>og:image</strong><br />
-    The thumbnail is derived from the featured image of your post (or page). Example:</p>
-    <p><img src="<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/sample-post.png" alt="" /></p>
-    <p>If your post does not have a featured image, then the default thumbnail will take over. Example:</p>
-    <p><img src="<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/sample-post-default.png" alt="" /></p>
-    <p>If someone links to your home page (which traditionally doesn't have a featured image) then the default image is also used here. Example:</p>
-    <p><img src="<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/sample-home.png" alt="" /></p>
+    <p>The thumbnail is derived from the featured image of your post (or page).</p>
+    <p>If your post does not have a featured image, then the default thumbnail will take over.</p>
+    <p>If someone links to your home page (which traditionally doesn't have a featured image) then the default image is used.</p>
     
     <h3 id="topic02" style="border-top:solid 1px #ccc; margin:20px 0; padding:20px 0 0 0;">How does it work?</h3>
     <p>Whenever anyone posts a website link to Facebook, the Facebook system searches the source code for the <a href="https://developers.facebook.com/docs/concepts/opengraph/" target="_blank">Open Graph</a>  meta properties. If they are not found, then it will instead pull (several) images (if any) contained within the web page. If there are multiple images pulled then the user can select one of the many presented (though the one they choose might not be the one you are happy to have as the primary image shown on Facebook, hence this plug-in).</p>
