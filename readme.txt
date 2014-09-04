@@ -2,7 +2,7 @@
 Contributors: mikeyott
 Tags: facebook, thumb, fixer, google+, google, plus, default, thumbnail, thumbnails, thumbs, og:image, og:description, og:title, open, graph, open graph
 Requires at least: 3.0
-Tested up to: 3.9.2
+Tested up to: 4.0
 Stable tag: trunk
 
 Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook or Google+.
@@ -50,6 +50,10 @@ To specify what Object Type your homepage is, go to the Wordpress Settings -> Ge
 Note: If no selection is made for the home page then the Object Type will be 'webpage'.
 
 == Changelog ==
+
+= 1.4.3 =
+
+Updated version compatibility for Wordpress 4.0.
 
 = 1.4.2 =
 

@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook and Google+.
 Author: Michael Ott
-Version: 1.4.2
+Version: 1.4.3
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -214,10 +214,10 @@ function myfbft_plugin_options() {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 } ?>
 
-<div style="position:fixed; bottom:0; right:0; width:250px; padding:0 20px 180px 20px; background:#2fcaa4 url(<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/tr-promo-background.png) no-repeat bottom; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 1px 0px; margin:55px 25px 0 0;">
+<div style="position:fixed; bottom:0; right:0; width:250px; padding:0 20px 180px 20px; background:#43bce9 url(<?php echo get_option('home'); ?>/wp-content/plugins/facebook-thumb-fixer/images/tr-promo-background.png) no-repeat bottom; box-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 1px 0px; margin:55px 25px 0 0;">
     <h3 style="color:#333f4f; text-align:center; text-transform:uppercase;">Introducing Task Rocket</h3>
     <p style="color:#fff; text-align:center;">Task Rocket is a simple front-end task management tool built on Wordpress.</p>
-    <p><a href="http://taskrocket.info/" target="_blank" style="display:block; width:185px; margin:10px auto 0 auto; font-weight:bold; text-transform:uppercase; color:#fff; background:#fab13f; border-bottom:solid 3px #e69200; padding:10px 0; text-decoration:none; text-align:center; border-radius:3px;">Take it for a test flight</a></p>
+    <p><a href="http://taskrocket.info/" target="_blank" style="display:block; width:185px; margin:10px auto 0 auto; font-weight:bold; text-transform:uppercase; color:#fff; background:#d84f92; border-bottom:solid 3px #cb357c; padding:10px 0; text-decoration:none; text-align:center; border-radius:3px;">Take it for a test flight</a></p>
 </div>
 	
 <div class="wrap" style="margin:0 340px 0 0 !important;">
