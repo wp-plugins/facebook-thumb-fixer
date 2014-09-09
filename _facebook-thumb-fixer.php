@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook and Google+.
 Author: Michael Ott
-Version: 1.4.3
+Version: 1.4.4
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -283,70 +283,149 @@ function myfbft_plugin_options() {
 <?php }
 add_action('wp_head', 'fbfixhead');
 function fbfixhead() { 
-	if ( !is_home() ) { // If not the homepage
+
+	 // Required for is_plugin_active to work.
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	
-	// If there is a post image...
-	if (has_post_thumbnail()) {
-	// Set '$featuredimg' variable for the featured image.
-	$featuredimg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), "Full");
-	$ftf_description = get_the_excerpt($post->ID);
-	global $post;
-	$ot = get_post_meta($post->ID, 'ftf_open_type', true);
-	if($ot == "") { $default = "article"; } else $default = get_post_meta($post->ID, 'ftf_open_type', true);
-	$ftf_head = '
-	<!--/ Facebook Thumb Fixer Open Graph /-->
-	<meta property="og:type" content="'. $default . '" />
-	<meta property="og:url" content="' . get_permalink() . '" />
-	<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
-	<meta property="og:description" content="' . wp_kses($ftf_description, array ()) . '" />
-	<meta property="og:site_name" content="' . wp_kses_data(get_bloginfo('name')) . '" />
-	<meta property="og:image" content="' . $featuredimg[0] . '" />
+	 // If BuddyPress is active
+	if ( is_plugin_active( 'buddypress/bp-loader.php' ) ) {
+		
+		// If not on a BuddyPress members page
+		if (!bp_current_component('members')) {
+	
+			 // If not the homepage
+			if ( !is_home() ) {
+			
+				// If there is a post image...
+				if (has_post_thumbnail()) {
+				// Set '$featuredimg' variable for the featured image.
+				$featuredimg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), "Full");
+				$ftf_description = get_the_excerpt($post->ID);
+				global $post;
+				$ot = get_post_meta($post->ID, 'ftf_open_type', true);
+				if($ot == "") { $default = "article"; } else $default = get_post_meta($post->ID, 'ftf_open_type', true);
+				$ftf_head = '
+				<!--/ Facebook Thumb Fixer Open Graph /-->
+				<meta property="og:type" content="'. $default . '" />
+				<meta property="og:url" content="' . get_permalink() . '" />
+				<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
+				<meta property="og:description" content="' . wp_kses($ftf_description, array ()) . '" />
+				<meta property="og:site_name" content="' . wp_kses_data(get_bloginfo('name')) . '" />
+				<meta property="og:image" content="' . $featuredimg[0] . '" />
+			
+				<meta itemscope itemtype="'. $default . '" />
+				<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
+				<meta itemprop="image" content="' . $featuredimg[0] . '" />
+				';
+				} //...otherwise, if there is no post image. 
+				else {
+				$ftf_description = get_the_excerpt($post->ID);
+				global $post;
+				$ot = get_post_meta($post->ID, 'ftf_open_type', true);
+				if($ot == "") { $default = "article"; } else $default = get_post_meta($post->ID, 'ftf_open_type', true);
+				$ftf_head = '
+				<!--/ Facebook Thumb Fixer Open Graph /-->
+				<meta property="og:type" content="'. $default . '" />
+				<meta property="og:url" content="' . get_permalink() . '" />
+				<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
+				<meta property="og:description" content="' . wp_kses($ftf_description, array ()) . '" />
+				<meta property="og:site_name" content="' . wp_kses_data(get_bloginfo('name')) . '" />
+				<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
+			
+				<meta itemscope itemtype="'. $default . '" />
+				<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
+				<meta itemprop="image" content="' . get_option('default_fb_thumb') . '" />
+				';
+				}
+				} //...otherwise, it must be the homepage so do this:
+				else {
+				$ftf_name = get_bloginfo('name');
+				$ftf_description = get_bloginfo('description');
+				$ot = get_option( 'homepage_object_type', '');
+				if($ot == "") { $default = "website"; } else $default = get_option( 'homepage_object_type', '');
+				$ftf_head = '
+				<!--/ Facebook Thumb Fixer Open Graph /-->
+				<meta property="og:type" content="' . $default . '" />
+				<meta property="og:url" content="' . get_option('home') . '" />
+				<meta property="og:title" content="' . wp_kses($ftf_name, array ()) . '" />
+				<meta property="og:description" content="' . wp_kses_data($ftf_description, array ()) . '" />
+				<meta property="og:site_name" content="' . wp_kses($ftf_name, array ()) . '" />
+				<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
+			
+				<meta itemscope itemtype="'. $default . '" />
+				<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
+				<meta itemprop="image" content="' . get_option('default_fb_thumb') . '" />
+				';
+			}
+		}
+  	} // Otherwie, if BuddyPress is NOT active...
+	else if ( !is_plugin_active( 'buddypress/bp-loader.php' ) ) {
 
-	<meta itemscope itemtype="'. $default . '" />
-	<meta itemprop="name" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
-	<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
-	<meta itemprop="image" content="' . $featuredimg[0] . '" />
-	';
-	} else { //...otherwise, if there is no post image.
-	$ftf_description = get_the_excerpt($post->ID);
-	global $post;
-	$ot = get_post_meta($post->ID, 'ftf_open_type', true);
-	if($ot == "") { $default = "article"; } else $default = get_post_meta($post->ID, 'ftf_open_type', true);
-	$ftf_head = '
-	<!--/ Facebook Thumb Fixer Open Graph /-->
-	<meta property="og:type" content="'. $default . '" />
-	<meta property="og:url" content="' . get_permalink() . '" />
-	<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
-	<meta property="og:description" content="' . wp_kses($ftf_description, array ()) . '" />
-	<meta property="og:site_name" content="' . wp_kses_data(get_bloginfo('name')) . '" />
-	<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
-
-	<meta itemscope itemtype="'. $default . '" />
-	<meta itemprop="name" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
-	<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
-	<meta itemprop="image" content="' . get_option('default_fb_thumb') . '" />
-	';
+		// If not the homepage	
+		if ( !is_home() ) {
+		
+			// If there is a post image...
+			if (has_post_thumbnail()) {
+			// Set '$featuredimg' variable for the featured image.
+			$featuredimg = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), "Full");
+			$ftf_description = get_the_excerpt($post->ID);
+			global $post;
+			$ot = get_post_meta($post->ID, 'ftf_open_type', true);
+			if($ot == "") { $default = "article"; } else $default = get_post_meta($post->ID, 'ftf_open_type', true);
+			$ftf_head = '
+			<!--/ Facebook Thumb Fixer Open Graph /-->
+			<meta property="og:type" content="'. $default . '" />
+			<meta property="og:url" content="' . get_permalink() . '" />
+			<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
+			<meta property="og:description" content="' . wp_kses($ftf_description, array ()) . '" />
+			<meta property="og:site_name" content="' . wp_kses_data(get_bloginfo('name')) . '" />
+			<meta property="og:image" content="' . $featuredimg[0] . '" />
+		
+			<meta itemscope itemtype="'. $default . '" />
+			<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
+			<meta itemprop="image" content="' . $featuredimg[0] . '" />
+			';
+			} //...otherwise, if there is no post image. 
+			else {
+			$ftf_description = get_the_excerpt($post->ID);
+			global $post;
+			$ot = get_post_meta($post->ID, 'ftf_open_type', true);
+			if($ot == "") { $default = "article"; } else $default = get_post_meta($post->ID, 'ftf_open_type', true);
+			$ftf_head = '
+			<!--/ Facebook Thumb Fixer Open Graph /-->
+			<meta property="og:type" content="'. $default . '" />
+			<meta property="og:url" content="' . get_permalink() . '" />
+			<meta property="og:title" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
+			<meta property="og:description" content="' . wp_kses($ftf_description, array ()) . '" />
+			<meta property="og:site_name" content="' . wp_kses_data(get_bloginfo('name')) . '" />
+			<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
+		
+			<meta itemscope itemtype="'. $default . '" />
+			<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
+			<meta itemprop="image" content="' . get_option('default_fb_thumb') . '" />
+			';
+			}
+			} //...otherwise, it must be the homepage so do this:
+			else {
+			$ftf_name = get_bloginfo('name');
+			$ftf_description = get_bloginfo('description');
+			$ot = get_option( 'homepage_object_type', '');
+			if($ot == "") { $default = "website"; } else $default = get_option( 'homepage_object_type', '');
+			$ftf_head = '
+			<!--/ Facebook Thumb Fixer Open Graph /-->
+			<meta property="og:type" content="' . $default . '" />
+			<meta property="og:url" content="' . get_option('home') . '" />
+			<meta property="og:title" content="' . wp_kses($ftf_name, array ()) . '" />
+			<meta property="og:description" content="' . wp_kses_data($ftf_description, array ()) . '" />
+			<meta property="og:site_name" content="' . wp_kses($ftf_name, array ()) . '" />
+			<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
+		
+			<meta itemscope itemtype="'. $default . '" />
+			<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
+			<meta itemprop="image" content="' . get_option('default_fb_thumb') . '" />
+			';
+		}
 	}
-	} else { //...otherwise, it must be the homepage so do this:
-	$ftf_name = get_bloginfo('name');
-	$ftf_description = get_bloginfo('description');
-	$ot = get_option( 'homepage_object_type', '');
-	if($ot == "") { $default = "website"; } else $default = get_option( 'homepage_object_type', '');
-	$ftf_head = '
-	<!--/ Facebook Thumb Fixer Open Graph /-->
-	<meta property="og:type" content="' . $default . '" />
-	<meta property="og:url" content="' . get_option('home') . '" />
-	<meta property="og:title" content="' . wp_kses($ftf_name, array ()) . '" />
-	<meta property="og:description" content="' . wp_kses_data($ftf_description, array ()) . '" />
-	<meta property="og:site_name" content="' . wp_kses($ftf_name, array ()) . '" />
-	<meta property="og:image" content="' . get_option('default_fb_thumb') . '" />
-
-	<meta itemscope itemtype="'. $default . '" />
-	<meta itemprop="name" content="' . wp_kses_data(get_the_title($post->ID)) . '" />
-	<meta itemprop="description" content="' . wp_kses($ftf_description, array ()) . '" />
-	<meta itemprop="image" content="' . get_option('default_fb_thumb') . '" />
-	';
-}
   echo $ftf_head;
   print "\n";
 }

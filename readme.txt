@@ -51,6 +51,10 @@ Note: If no selection is made for the home page then the Object Type will be 'we
 
 == Changelog ==
 
+= 1.4.4 =
+
+Prevented open graph from outputting on BuddyPress members pages to 'fix' malformed HTML issue.
+
 = 1.4.3 =
 
 Updated version compatibility for Wordpress 4.0.
