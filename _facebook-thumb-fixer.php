@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook and Google+.
 Author: Michael Ott
-Version: 1.4.5
+Version: 1.4.6
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -313,10 +313,16 @@ function myfbft_plugin_options() {
             <p>But don't fret, it's easy to get around. Using the official <a href='http://developers.facebook.com/tools/debug' target='_blank'>Facebook debugger</a> tool, paste in the URL of your post, hit the <strong>Debug</strong> button and see if the image thumb loads (scroll down to <strong>Object Properties</strong>). If it doesn't try hitting the <strong>Fetch new scrape information</strong> button.</p>
         </div>
         
+        <p class="topic">The settings page isn't showing the dimensions of my image. What's up with that?</p>
+        <div class="help-answer">
+            <p>This is extremely rare, and won't prevent the plug-in from doing it's job. But the most likely cause is a server side setting in php.ini that needs to be changed: <code>allow_url_fopen = On</code></p>
+        </div>
+        
         <p class="topic">Where can I get support and discuss this plug-in?</p>
         <div class="help-answer">
-        	<p>The best place to discuss this plug-in and reach out to me for support is at <a href="http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/" target="_blank">this page</a> on my blog.</p>
+        	<p>There are two places to discuss this plug-in and reach out to me for support: <a href="http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/" target="_blank">my blog</a> or on the <a href="https://wordpress.org/support/plugin/facebook-thumb-fixer">Wordpress plug-in page</a>.</p>
         </div>
+        
     </div>
     
 </div>
