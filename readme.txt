@@ -51,6 +51,12 @@ Note: If no selection is made for the home page then the Object Type will be 'we
 
 == Changelog ==
 
+= 1.4.5 =
+
+Full sized default thumbnail image preview.
+Updated help topics and tips to reflect latest Facebook recommendations.
+Presentation tweaks.
+
 = 1.4.4 =
 
 Prevented open graph from outputting on BuddyPress members pages to 'fix' malformed HTML issue.
