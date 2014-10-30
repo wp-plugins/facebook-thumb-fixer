@@ -49,7 +49,7 @@ class general_setting_default_fb_thumb {
 		<?php if ($fbt_value) {
 		echo '<span class="ftf-tick">&#10003;</span>';
 		}
-		echo '<p class="description">This is the full path to your default thumb. Facebook <a href="https://developers.facebook.com/docs/sharing/best-practices" target="_blank">recommends</a> your image be 1200x360 or 600x315. View help topics <a href="' . admin_url( '/options-general.php?page=facebook-thumb-fixer' ) . '">here</a>.</p>';
+		echo '<p class="description">This is the full path to your default thumb. Facebook <a href="https://developers.facebook.com/docs/sharing/best-practices" target="_blank">recommends</a> your image be 1200x630 or 600x315. View help topics <a href="' . admin_url( '/options-general.php?page=facebook-thumb-fixer' ) . '">here</a>.</p>';
 		if ($fbt_value) {
 		echo '<p class="description">(Note: The image shown below is scaled down. The real dimensions are actually ';
 		list($width, $height) = getimagesize($fbt_value); echo $width . ' x ' . $height . ').</p>';
@@ -241,9 +241,9 @@ function myfbft_plugin_options() {
     <p class="ftf-good">Well done! You currently have a default Facebook thumbnail set. You can change the default image <a href="<?php echo get_admin_url(); ?>/options-general.php#dfb">here</a>.</p>
     <a href="<?php echo $fbt_value; ?>?TB_iframe=true&width=600&height=550" class="thickbox" title="Your default open graph image is <?php echo $width . " x " . $height; ?> pixels.">
     <img src="<?php echo $fbt_value; ?>" alt="" class="ftf-preview thickbox" /></a>
-    <p class="description">Note: Facebook <a href="https://developers.facebook.com/docs/sharing/best-practices" target="_blank">recommends</a> your image be 1200x360 or 600x315. Your image (show here scaled down) is <?php echo $width . " x " . $height; ?>.</p>
+    <p class="description">Note: Facebook <a href="https://developers.facebook.com/docs/sharing/best-practices" target="_blank">recommends</a> your image be 1200x630 or 600x315. Your image (show here scaled down) is <?php echo $width . " x " . $height; ?>.</p>
     <?php } else { ?>
-    <p class="ftf-bad">You currently do not have a Default Facebook Thumbnail set. Set one <a href="<?php echo get_admin_url(); ?>/options-general.php#dfb">here</a>. Facebook <a href="https://developers.facebook.com/docs/sharing/best-practices" target="_blank">recommends</a> your image be 1200x360 or 600x315.</p>
+    <p class="ftf-bad">You currently do not have a Default Facebook Thumbnail set. Set one <a href="<?php echo get_admin_url(); ?>/options-general.php#dfb">here</a>. Facebook <a href="https://developers.facebook.com/docs/sharing/best-practices" target="_blank">recommends</a> your image be 1200x630 or 600x315.</p>
     <?php } ?>
     
     <script>
