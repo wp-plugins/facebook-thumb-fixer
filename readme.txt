@@ -51,6 +51,10 @@ Note: If no selection is made for the home page then the Object Type will be 'we
 
 == Changelog ==
 
+= 1.4.8 =
+
+Suppressed unnecessary warning when fall-back image is missing.
+
 = 1.4.7 =
 
 Fixed extremely rare conflict with other plug-ins. No need to update unless this plug-in is causing a conflict with another.

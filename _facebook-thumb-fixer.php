@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook and Google+.
 Author: Michael Ott
-Version: 1.4.7
+Version: 1.4.8
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -53,7 +53,7 @@ class general_setting_default_fb_thumb {
 		echo '<p class="description">This is the full path to your default thumb. Facebook <a href="https://developers.facebook.com/docs/sharing/best-practices" target="_blank">recommends</a> your image be 1200x630 or 600x315. View help topics <a href="' . admin_url( '/options-general.php?page=facebook-thumb-fixer' ) . '">here</a>.</p>';
 		if ($fbt_value) {
 		echo '<p class="description">(Note: The image shown below is scaled down. The real dimensions are actually ';
-		list($width, $height) = getimagesize($fbt_value); echo $width . ' x ' . $height . ').</p>';
+		list($width, $height) = @getimagesize($fbt_value); echo $width . ' x ' . $height . ').</p>';
 		echo '<a href="' . $fbt_value . '?TB_iframe=true&width=600&height=550" class="thickbox" title="Your default open graph image is ' . $width . ' x ' . $height . ' pixels."><img src="' . $fbt_value . '" title="Default Facebook Thumb" class="thickbox ftf-preview" /></a>';
 		}
     }
@@ -238,7 +238,7 @@ function myfbft_plugin_options() {
 	<?php 
     $fbt_value = get_option( 'default_fb_thumb', '' );
     if ($fbt_value) {
-	list($width, $height) = getimagesize($fbt_value); ?>
+	list($width, $height) = @getimagesize($fbt_value); ?>
     <p class="ftf-good">Well done! You currently have a default Facebook thumbnail set. You can change the default image <a href="<?php echo get_admin_url(); ?>/options-general.php#dfb">here</a>.</p>
     <a href="<?php echo $fbt_value; ?>?TB_iframe=true&width=600&height=550" class="thickbox" title="Your default open graph image is <?php echo $width . " x " . $height; ?> pixels.">
     <img src="<?php echo $fbt_value; ?>" alt="" class="ftf-preview thickbox" /></a>
