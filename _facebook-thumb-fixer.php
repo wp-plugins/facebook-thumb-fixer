@@ -4,7 +4,7 @@ Plugin Name: Facebook Thumb Fixer
 Plugin URI: http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress/
 Description: Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook and Google+.
 Author: Michael Ott
-Version: 1.4.8
+Version: 1.4.9
 Author URI: http://www.thatwebguyblog.com
 */
 
@@ -239,7 +239,7 @@ function myfbft_plugin_options() {
     $fbt_value = get_option( 'default_fb_thumb', '' );
     if ($fbt_value) {
 	list($width, $height) = @getimagesize($fbt_value); ?>
-    <p class="ftf-good">Well done! You currently have a default Facebook thumbnail set. You can change the default image <a href="<?php echo get_admin_url(); ?>/options-general.php#dfb">here</a>.</p>
+    <p class="ftf-good">Well done! You have a default Facebook thumbnail set. This will be used when a page or post you share doesn't already have a featured image. You can change the default image <a href="<?php echo get_admin_url(); ?>/options-general.php#dfb">here</a>.</p>
     <a href="<?php echo $fbt_value; ?>?TB_iframe=true&width=600&height=550" class="thickbox" title="Your default open graph image is <?php echo $width . " x " . $height; ?> pixels.">
     <img src="<?php echo $fbt_value; ?>" alt="" class="ftf-preview thickbox" /></a>
     <p class="description">Note: Facebook <a href="https://developers.facebook.com/docs/sharing/best-practices" target="_blank">recommends</a> your image be 1200x630 or 600x315. Your image (show here scaled down) is <?php echo $width . " x " . $height; ?>.</p>
@@ -289,6 +289,16 @@ function myfbft_plugin_options() {
             <h4>Homepage</h4>
             <p>To specify what Object Type your homepage is, go to the Wordpress<strong> Settings -&gt; General</strong> page <a href="<?php echo get_admin_url(); ?>options-general.php">here</a> and make a selection from the 'Homepage Object Type' field.</p>
             <p><strong>Note: </strong>If no selection is made for the homepage then the Object Type will be 'webpage'.</p>
+        </div>
+        
+        <p class="topic">How do I customise the description?</p>
+        <div class="help-answer">
+            <p>By default the description is derived from the content, but if you want to customise it then simply add content into the excerpt field.</p>
+        </div>
+        
+        <p class="topic">How can I test a post/page without sharing it on Facebook first?</p>
+        <div class="help-answer">
+            <p>Run the URL through the <a href='http://developers.facebook.com/tools/debug' target='_blank'>Facebook debugger</a> tool and examine the information that is returned.</p>
         </div>
         
         <p class="topic">What if you don't use Featured Images on your pages or posts?</p>

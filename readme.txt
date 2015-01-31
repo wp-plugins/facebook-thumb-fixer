@@ -51,6 +51,10 @@ Note: If no selection is made for the home page then the Object Type will be 'we
 
 == Changelog ==
 
+= 1.4.9 =
+
+Updated help topics with answers to some common questions.
+
 = 1.4.8 =
 
 Suppressed unnecessary warning when fall-back image is missing.
