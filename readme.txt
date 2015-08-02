@@ -1,21 +1,21 @@
 === Facebook Thumb Fixer ===
 Contributors: mikeyott
-Tags: facebook, thumb, fixer, google+, google, plus, default, thumbnail, thumbnails, thumbs, og:image, og:description, og:title, open, graph, open graph
-Requires at least: 3.0
-Tested up to: 4.2.2
+Tags: facebook, thumb, fixer, default, thumbnail, thumbnails, thumbs, og:image, og:description, og:title, open, graph, open graph
+Requires at least: 4.0
+Tested up to: 4.2.3
 Stable tag: trunk
 
-Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook or Google+.
+Fixes the problem of the missing (or wrong) thumbnail when a post is shared on Facebook.
 
 == Description ==
 
-This plug-in is for those who have the problem where sharing a post on Facebook or Google+ shows the wrong (or no) thumbnail image.
+This plug-in is for those who have the problem where sharing a post on Facebook shows the wrong (or no) thumbnail image.
 
-It works by making sure the thumbnail is derived from the featured image of your post. If your post doesn't have a featured image then it will use a fall-back image that you can specify in Settings -> General.
+It works by making sure the thumbnail is derived from the featured image of your post. If your post doesn't have a featured image then it will use a fall-back image that you can specify.
 
-The plug-in forces the open graph meta properties into the head of each page and post: og:image, og:title, og:description, og:site_name, og:type and og:url, all of which both Facebook and Google+ (and other services that use open graph) scan for when someone shares your web page.
+The plug-in inserts the open graph meta properties, which Facebook and other social services look for when someone shares your page. These properties contain information about the page and of course the image you specify.
 
-<strong>NEW!</strong> Specify an <a href-"https://developers.facebook.com/docs/reference/opengraph" target="_blank">object type</a> for any post, page or the home page.
+<strong>NEW!</strong> View a preview of how your page will look when shared on Facebook.
 
 == Installation ==
 
@@ -27,9 +27,9 @@ Deactivate the plugin, delete if desired.
 
 == Official Web Site (and support) ==
 
-<a href="http://www.thatwebguyblog.com/post/facebook-thumb-fixer-for-wordpress">That Web Guy Blog</a>
+<a href="https://wordpress.org/support/plugin/facebook-thumb-fixer">Facebook Thumb Fixer Support</a> at the official Wordpress repository.
 
-Go to Settings -> Facebook Thumb Fixer for more information about how it works, what it does, and how to resolve common problems.
+Go to 'Facebook Thumb Fixer' in WordPress admin for more information about how it works, what it does, and how to resolve common problems.
 
 == How to set a fall-back image ==
 
@@ -51,10 +51,15 @@ Note: If no selection is made for the home page then the Object Type will be 'we
 
 == Changelog ==
 
+= 1.5.1 =
+
+Fixed Undefined variables issue.
+Confirmed WP 4.2.3 compatibility.
+Updated support link.
+
 = 1.5 =
 
 Added Facebook preview.
-
 
 = 1.4.9 =
 

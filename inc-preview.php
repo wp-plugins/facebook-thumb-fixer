@@ -22,7 +22,7 @@ $image_height = $image_data[2];
 	<div class="ftf-preview-details">
 
 		<div class="overflow<?php if ($image_width < 600 || $image_height < 315) { echo " too-small"; } ?>">
-			<?php echo the_post_thumbnail( $post_id, 'full' ); ?>
+			<?php echo the_post_thumbnail( $post->ID, 'full' ); ?>
 		</div>
 
 		<h1><?php echo the_title(); ?></h1>
